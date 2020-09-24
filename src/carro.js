@@ -2,8 +2,16 @@ class Carro {
     constructor(name, price) {
         this.name = name;
         this.price = price;
-        this.NORMAL = 1;
-        this.LANCAMENTO = 2;
+        this._NORMAL = 1;
+        this._LANCAMENTO = 2;
+    }
+
+    get NORMAL() {
+        return this._NORMAL;
+    }
+
+    get LANCAMENTO() {
+        return this._LANCAMENTO;
     }
 
     getName() {

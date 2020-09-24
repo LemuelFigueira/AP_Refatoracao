@@ -15,6 +15,3 @@ cliente01.addRent(rentTesla);
 cliente01.addRent(rentAudi);
 
 cliente01.showRentRegistry();
-
-
-

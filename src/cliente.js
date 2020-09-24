@@ -1,38 +1,32 @@
+// --- Refactoring methods used ---
+// removing setter method
+// encapsulate record
+// single responsability
+// convert to arrow function
+
+
 class Cliente {
     constructor(name) {
         this.name = name;
         this.rents = [];
     }
 
-    addRent(rent) {
+    addRent = (rent) => {
         this.rents.push(rent);
     }
 
-    getName() {
+    getName = () => {
         return this.name;
     }
 
-    calcRentValue(rent) {
+    calcRentValue = (rent) => {
 
-        // calculate the value from rent
-        let value = 0;
-        switch (rent.getCar().getPrice()) {
-
-            case rent.getCar().NORMAL:
-                value += 1.5;
-                if (rent.getDaysRented() > 3)
-                    value += (rent.getDaysRented() - 3) * 1.5;
-                break;
-
-            case rent.getCar().LANCAMENTO:
-                value += rent.getDaysRented() * 3;
-                break;
-        }
+        var value = rent.calcRentValue();
 
         return value;
     }
 
-    calcBonus(rent) {
+    calcBonus = (rent) => {
         // Bônus para mais de dois dias com um lancamento
         if (rent.getCar().getPrice() == rent.getCar().LANCAMENTO && rent.getDaysRented() > 1) {
             return 1;
@@ -41,7 +35,7 @@ class Cliente {
         return 0;
     }
 
-    showRentRegistry() {
+    showRentRegistry = () => {
         let totalValue = 0;
         let points = 0;
 
@@ -51,29 +45,12 @@ class Cliente {
             let value = 0;
 
             // calculate the value from rent
-
             value += this.calcRentValue(element);
-
-            // switch (element.getCar().getPrice()) {
-
-            //     case element.getCar().NORMAL:
-            //         value += 1.5;
-            //         if (element.getDaysRented() > 3)
-            //             value += (element.getDaysRented() - 3) * 1.5;
-            //         break;
-
-            //     case element.getCar().LANCAMENTO:
-            //         value += element.getDaysRented() * 3;
-            //         break;
-            // }
 
             // Adiciona um ponto
             points++;
 
             // Bônus para mais de dois dias com um lancamento
-            // if (element.getCar().getPrice() == element.getCar().LANCAMENTO && element.getDaysRented() > 1) {
-            //     points++;
-            // }
             points += this.calcBonus(element);
 
 
@@ -92,7 +69,7 @@ class Cliente {
     }
 }
 
-function newCliente(name) {
+newCliente = (name) => {
     return new Cliente(name);
 }
 
